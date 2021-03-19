@@ -36,12 +36,18 @@ class App extends React.Component {
   }
 
   onAdoptPet = (id) => {
-    let petsCopy = [...this.state.pets];
-    petsCopy.forEach(pet => {
-      if (pet.id == id) {
-        pet.isAdopted = true;
-      }
-    })
+    // let petsCopy = [...this.state.pets];
+    // petsCopy.forEach(pet => {
+    //   if (pet.id == id) {
+    //     pet.isAdopted = true;
+    //   }
+    // })
+    // this.setState({
+    //   pets: petsCopy
+    // })
+    let petsCopy = this.state.pets.map(pet => {
+      return pet.id == id ? {...pet, isAdopted: true} : pet
+    });
     this.setState({
       pets: petsCopy
     })
